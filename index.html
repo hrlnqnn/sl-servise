@@ -14,8 +14,9 @@
 		href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Roboto:wght@100;300;400;500;700;900&display=swap"
 		rel="stylesheet">
 	<link rel="icon" href="./images/icon.png">
-
 	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -24,10 +25,7 @@
 		<div class="banner-text">
 			<h1>SL-Service</h1>
 			<p>Лучший сервис. Высшее качество. Безупречная репутация!</p>
-			<div class="banner-btn">
-				<a href="#"><span></span>Обратная связь</a>
-				<a href="#"><span></span>Прайс</a>
-			</div>
+			<button class="banner-btn" type="button" data-modal-open>Обратная связь</button>
 		</div>
 	</section>
 
@@ -44,6 +42,9 @@
 	</div>
 	<div id="menuBtn">
 		<img src="./images/menu.png" id="menu">
+	</div>
+	<div id="scrollTop" class="scrollTop_btn">
+		<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
 	</div>
 
 	<!--Fearures-->
@@ -319,34 +320,57 @@
 			<i class="fab fa-youtube"></i>
 			<p>Copyright Sukhorukova Anastasiia</p>
 		</div>
-
 	</section>
+	<div class="backdrop is-hidden" data-modal>
+		<div class="modal">
+			<button class="modal-btn" data-modal-close>
+				<svg width="18" height="18" fill="currentColor">
+					<use href="./images/icons.svg#icon-close-black"></use>
+				</svg>
+			</button>
+			<h2 class="modal-title">Залиште свої дані, ми вам передзвонимо</h2>
+			<form>
+				<label class="modal-form-label">Ім'я
+					<input class="modal-form-input-icon" type="text" name="username" placeholder="" autofocus />
+					<svg class="modal-icon" width="18" height="18" fill="currentColor">
+						<use href="./images/icons.svg#icon-person"></use>
+					</svg>
 
-	<script>
-		var menuBtn = document.getElementById("menuBtn")
-		var sideNav = document.getElementById("sideNav")
-		var menu = document.getElementById("menu")
+				</label>
+				<label class="modal-form-label" for="phone">Телефон
+					<input class="modal-form-input-icon" type="tel" id="phone" name="phone"
+						pattern="+38 (099) 123 45 67" required>
+					<svg class="modal-icon" width="18" height="18" fill="currentColor">
+						<use href="./images/icons.svg#icon-phone"></use>
+					</svg>
+				</label>
+				<label class="modal-form-label">Пошта
+					<input class="modal-form-input-icon" type="email" name="email">
+					<svg class="modal-icon" width="18" height="18" fill="currentColor">
+						<use href="./images/icons.svg#icon-email"></use>
+					</svg>
+				</label>
+				<label class="modal-form-label message">Коментар
+					<textarea class="modal-form-input" name="feedback" rows="5" placeholder="Введіть текст"></textarea>
+				</label>
+				<label class="form-agreement">
+					<input class="agreement-checkbox visually-hidden" type="checkbox" />
+					<svg class="agreement-icon" width="16" height="15">
+						<use class="agreement-icon-uncheck" href="./images/icons.svg#icon-unchecked"></use>
+						<use class="agreement-icon-check" href="./images/icons.svg#icon-checked"></use>
+					</svg>
+					<span class="form-agreement-desc">Погоджуюся з розсилкою та приймаю <a class="contract"
+							href="#">Умови
+							договору</a></span>
+				</label>
 
-		sideNav.style.right = "-250px";
+				<button class="modal-form-btn" type="submit">Відправити</button>
+			</form>
+		</div>
 
-		menuBtn.onclick = function () {
-			if (sideNav.style.right == "-250px") {
-				sideNav.style.right = "0";
-				menu.src = "images/close.png"
-			}
-			else {
-				sideNav.style.right = "-250px";
-				menu.src = "images/menu.png"
-			}
-		}
+	</div>
 
-		var scroll = new SmoothScroll('a[href*="#"]', {
-			speed: 1000,
-			speedAsDuration: true
-		});
-
-	</script>
-
+	<script src="script.js"></script>
 </body>
 
 </html>
